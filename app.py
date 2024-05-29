@@ -689,10 +689,21 @@ if page == "Implied Volatility":
     # Obtener el último precio del VIX
     latest_vix_price = vix_data['Close'].iloc[-1]
 
-    # Crear el gráfico del VIX
-    st.markdown(f"### Volatility Index (^VIX): {latest_vix_price:.2f} ")
-    fig_vix = go.Figure(go.Scatter(x=vix_data.index, y=vix_data['Close'], mode='lines', name='VIX', line=dict(color='red')))
-    fig_vix.update_layout(title='',
+    # Crear el gráfico del VIX con las líneas de Low y High
+    st.markdown(f"### Volatility Index (^VIX): {latest_vix_price:.2f}")
+    fig_vix = go.Figure()
+
+    # Añadir la línea de 'Close' del VIX en rojo
+    fig_vix.add_trace(go.Scatter(x=vix_data.index, y=vix_data['Close'], mode='lines', name='VIX Close', line=dict(color='red')))
+
+    # Añadir la línea de 'Low' del VIX en verde
+    fig_vix.add_trace(go.Scatter(x=vix_data.index, y=vix_data['Low'], mode='lines', name='VIX Low', line=dict(color='green')))
+
+    # Añadir la línea de 'High' del VIX en rojo oscuro
+    fig_vix.add_trace(go.Scatter(x=vix_data.index, y=vix_data['High'], mode='lines', name='VIX High', line=dict(color='darkred')))
+
+    # Actualizar el layout del gráfico
+    fig_vix.update_layout(title='VIX Price with High and Low',
                         xaxis_title='Date',
                         yaxis_title='VIX Price',
                         template='plotly_dark')
