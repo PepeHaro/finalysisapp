@@ -30,8 +30,8 @@ import os
 
 # Obtener los tokens desde los secretos de Streamlit
 try:
-    token1 = st.secrets["tokens"]["token1"]
-    token2 = st.secrets["tokens"]["token2"]
+    token1 = st.secrets["token1"]
+    token2 = st.secrets["token2"]
 except KeyError as e:
     raise ValueError(f"No se encontró el token {e} en los secretos de Streamlit")
 
