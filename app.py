@@ -43,7 +43,7 @@ st.image(ruta_foto,caption= "José Federico Haro Velasco 0233195",use_column_wid
 st.sidebar.title("EXPLORE:bar_chart:")
 page = st.sidebar.selectbox("Select one", ["Company Overview","Sector Dashboard","Implied Volatility","News"])
 
-#COMPANY OVERVIEW
+# COMPANY OVERVIEW
 if page == "Company Overview":
     st.header("Welcome to the Financial Analysis APP")
     st.write("Get a detailed view of any listed company by entering its ticker, including description, key data and performance charts.")
@@ -57,6 +57,9 @@ if page == "Company Overview":
         try:
             company = yf.Ticker(ticker)
             info = company.info
+
+            # Mostrar la información disponible para depuración
+            st.write("Información completa:", info)
 
             # Obtener el precio en tiempo real y los datos de hoy
             todays_data = company.history(period='1d')
@@ -82,7 +85,7 @@ if page == "Company Overview":
             # Mostrar los otros datos en la columna izquierda
             with col1:
                 st.subheader(info.get("longName", "Nombre de la empresa no disponible"))
-                
+
                 # Mostrar el logo
                 website = info.get('website')
                 if website:
@@ -91,19 +94,20 @@ if page == "Company Overview":
                     if response.status_code == 200:
                         logo_image = Image.open(BytesIO(response.content))
                         st.image(logo_image)
-                
-                st.write(f"· WebPage: {info.get('website', 'N/A')}")
+
+                # Mostrar datos solo si están disponibles
+                st.write(f"· WebPage: {website if website else 'N/A'}")
                 st.write(f"· Industry: {info.get('industry', 'N/A')}")
                 st.write(f"· Sector: {info.get('sector', 'N/A')}")
-                st.write(f"· Total Income: ${'{:,.0f}'.format(info.get('totalRevenue', 'N/A')) if isinstance(info.get('totalRevenue', 'N/A'), (int, float)) else info.get('totalRevenue', 'N/A')}")
-                st.write(f"· MarketCap: ${'{:,.0f}'.format(info.get('marketCap', 'N/A')) if isinstance(info.get('marketCap', 'N/A'), (int, float)) else info.get('marketCap', 'N/A')}")
-                st.write(f"· Total Debt: ${'{:,.0f}'.format(info.get('totalDebt', 'N/A')) if isinstance(info.get('totalDebt', 'N/A'), (int, float)) else info.get('totalDebt', 'N/A')}")
-                st.write(f"· Total Cash: ${'{:,.0f}'.format(info.get('totalCash', 'N/A')) if isinstance(info.get('totalCash', 'N/A'), (int, float)) else info.get('totalCash', 'N/A')}")
-                st.write(f"· Net Income: ${'{:,.0f}'.format(info.get('netIncomeToCommon', 'N/A')) if isinstance(info.get('netIncomeToCommon', 'N/A'), (int, float)) else info.get('netIncomeToCommon', 'N/A')}")
-                st.write(f"· Operating Margin: {info.get('operatingMargins', 'N/A')*100}%" if isinstance(info.get('operatingMargins', 'N/A'), (int, float)) else info.get('operatingMargins', 'N/A'))
-                st.write(f"· P/E: {info.get('trailingPE', 'N/A') if isinstance(info.get('trailingPE', 'N/A'), (int, float)) else 'N/A'}")
-                st.write(f"· Number of employees: {info.get('fullTimeEmployees', 'N/A'):,}" if isinstance(info.get('fullTimeEmployees', 'N/A'), (int, float)) else info.get('fullTimeEmployees', 'N/A'))
-                
+                st.write(f"· Total Income: ${'{:,.0f}'.format(info['totalRevenue']) if 'totalRevenue' in info and isinstance(info['totalRevenue'], (int, float)) else 'N/A'}")
+                st.write(f"· MarketCap: ${'{:,.0f}'.format(info['marketCap']) if 'marketCap' in info and isinstance(info['marketCap'], (int, float)) else 'N/A'}")
+                st.write(f"· Total Debt: ${'{:,.0f}'.format(info['totalDebt']) if 'totalDebt' in info and isinstance(info['totalDebt'], (int, float)) else 'N/A'}")
+                st.write(f"· Total Cash: ${'{:,.0f}'.format(info['totalCash']) if 'totalCash' in info and isinstance(info['totalCash'], (int, float)) else 'N/A'}")
+                st.write(f"· Net Income: ${'{:,.0f}'.format(info['netIncomeToCommon']) if 'netIncomeToCommon' in info and isinstance(info['netIncomeToCommon'], (int, float)) else 'N/A'}")
+                st.write(f"· Operating Margin: {info['operatingMargins']*100:.2f}%" if 'operatingMargins' in info and isinstance(info['operatingMargins'], (int, float)) else 'N/A')
+                st.write(f"· P/E: {info['trailingPE']:.2f}" if 'trailingPE' in info and isinstance(info['trailingPE'], (int, float)) else 'N/A')
+                st.write(f"· Number of employees: {info['fullTimeEmployees']:,}" if 'fullTimeEmployees' in info and isinstance(info['fullTimeEmployees'], (int, float)) else 'N/A')
+
             # Mostrar la descripción de la empresa en la columna derecha
             with col2:
                 description = info.get('longBusinessSummary', 'Descripción de la empresa no disponible')
@@ -132,7 +136,7 @@ if page == "Company Overview":
                     name='Net Income',
                     marker_color='indigo'
                 ))
-                
+
                 fig.update_layout(
                     title='REVENUE AND NET INCOME',
                     xaxis_tickmode='array',
@@ -150,7 +154,6 @@ if page == "Company Overview":
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.write("Financial data for Total Revenue and/or Net Income is not available.")
-            
 
             # Sección de Activos y Pasivos
             balance_sheet = company.balance_sheet
@@ -196,7 +199,7 @@ if page == "Company Overview":
             if 'Free Cash Flow' in cash_flow.index:
                 cash_flow_data = cash_flow.loc['Free Cash Flow'].tail(5)
                 years = cash_flow.columns.year  # Capturamos los años en las columnas para usarlos como eje x
-                
+
                 fig = go.Figure()
                 fig.add_trace(go.Bar(
                     x=[str(year) for year in years],  # Convertimos los años a strings si es necesario
@@ -256,7 +259,7 @@ if page == "Sector Dashboard":
     }
 
     End_Point_1 = "https://elite.finviz.com/export.ashx?v="
-
+    
     # Guardar el último sector descargado
     last_downloaded_sector = st.session_state.get('last_downloaded_sector', '')
 

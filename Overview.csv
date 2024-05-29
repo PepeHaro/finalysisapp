@@ -1,0 +1,66 @@
+"No.","Ticker","Company","Sector","Industry","Country","Market Cap","P/E","Price","Change","Volume"
+1,"ACGL","Arch Capital Group Ltd","Financial","Insurance - Diversified","Bermuda",38131.01,8.02,101.55,-0.68%,1367956
+2,"AFL","Aflac Inc.","Financial","Insurance - Life","USA",49537.42,9.62,87.18,-0.09%,1509484
+3,"AIG","American International Group Inc","Financial","Insurance - Diversified","USA",51480.88,11.58,77.57,0.27%,3747909
+4,"AIZ","Assurant Inc","Financial","Insurance - Specialty","USA",8788.91,11.80,169.05,0.28%,624173
+5,"AJG","Arthur J. Gallagher & Co.","Financial","Insurance Brokers","USA",53602.42,49.69,245.32,-1.21%,481195
+6,"ALL","Allstate Corp","Financial","Insurance - Property & Casualty","USA",43124.76,35.67,163.50,-0.71%,827852
+7,"AMP","Ameriprise Financial Inc","Financial","Asset Management","USA",42506.97,14.57,427.98,-1.61%,385013
+8,"AON","Aon plc.","Financial","Insurance Brokers","Ireland",59971.54,21.61,275.82,-1.23%,1128628
+9,"AXP","American Express Co.","Financial","Credit Services","USA",169711.64,19.43,235.94,-0.55%,2708847
+10,"BAC","Bank Of America Corp.","Financial","Banks - Diversified","USA",302804.74,13.37,38.72,-1.53%,26664097
+11,"BEN","Franklin Resources, Inc.","Financial","Asset Management","USA",11963.29,13.04,22.74,-1.43%,3415470
+12,"BK","Bank Of New York Mellon Corp","Financial","Asset Management","USA",43194.08,14.06,57.76,-0.82%,2873508
+13,"BLK","Blackrock Inc.","Financial","Asset Management","USA",112427.79,19.23,756.58,-1.92%,574858
+14,"BRK-B","Berkshire Hathaway Inc.","Financial","Insurance - Diversified","USA",871581.71,11.93,404.09,0.05%,3426775
+15,"BRO","Brown & Brown, Inc.","Financial","Insurance Brokers","USA",24622.78,26.60,86.32,-1.44%,1483972
+16,"BX","Blackstone Inc","Financial","Asset Management","USA",140406.97,40.95,116.13,-4.19%,4753837
+17,"C","Citigroup Inc","Financial","Banks - Diversified","USA",118280.35,18.32,62.01,-0.70%,7206859
+18,"CB","Chubb Limited","Financial","Insurance - Property & Casualty","Switzerland",106196.87,11.61,261.53,-0.42%,1329303
+19,"CFG","Citizens Financial Group Inc","Financial","Banks - Regional","USA",15561.68,12.36,34.20,-1.33%,3803146
+20,"CINF","Cincinnati Financial Corp.","Financial","Insurance - Property & Casualty","USA",17951.17,7.63,114.66,-0.93%,537020
+21,"CMA","Comerica, Inc.","Financial","Banks - Regional","USA",6557.90,9.81,49.46,-2.00%,1271311
+22,"CME","CME Group Inc","Financial","Financial Data & Stock Exchanges","USA",74132.75,23.45,205.89,-1.25%,2118672
+23,"COF","Capital One Financial Corp.","Financial","Credit Services","USA",51807.45,10.62,135.65,-0.71%,1615928
+24,"DFS","Discover Financial Services","Financial","Credit Services","USA",30493.01,13.89,121.68,-0.11%,1159391
+25,"EG","Everest Group Ltd","Financial","Insurance - Reinsurance","Bermuda",16631.71,5.68,382.69,-1.49%,228277
+26,"FDS","Factset Research Systems Inc.","Financial","Financial Data & Stock Exchanges","USA",15921.96,33.07,417.68,-2.19%,313626
+27,"FITB","Fifth Third Bancorp","Financial","Banks - Regional","USA",24803.29,11.56,36.26,-1.15%,2960655
+28,"GL","Globe Life Inc","Financial","Insurance - Life","USA",7600.28,7.87,82.37,-1.89%,1255915
+29,"GS","Goldman Sachs Group, Inc.","Financial","Capital Markets","USA",147419.04,17.85,457.17,-0.57%,2312955
+30,"HBAN","Huntington Bancshares, Inc.","Financial","Banks - Regional","USA",19521.40,12.16,13.47,-1.39%,10421420
+31,"HIG","Hartford Financial Services Group Inc.","Financial","Insurance - Property & Casualty","USA",29501.06,11.34,99.75,-0.58%,1644428
+32,"ICE","Intercontinental Exchange Inc","Financial","Financial Data & Stock Exchanges","USA",75685.20,30.23,131.95,-1.29%,1471439
+33,"IVZ","Invesco Ltd","Financial","Asset Management","USA",6810.43,,15.14,-2.01%,2262082
+34,"JPM","JPMorgan Chase & Co.","Financial","Banks - Diversified","USA",568906.55,11.96,198.11,-0.70%,6114915
+35,"KEY","Keycorp","Financial","Banks - Regional","USA",13124.61,17.76,13.92,-1.90%,13504653
+36,"L","Loews Corp.","Financial","Insurance - Property & Casualty","USA",16408.70,11.01,74.11,0.12%,789794
+37,"MA","Mastercard Incorporated","Financial","Credit Services","USA",411328.96,35.17,442.47,-0.59%,1876929
+38,"MCO","Moody's Corp.","Financial","Financial Data & Stock Exchanges","USA",73018.09,43.66,399.88,-1.46%,656105
+39,"MET","Metlife Inc","Financial","Insurance - Life","USA",50091.29,24.21,70.44,-0.76%,1872331
+40,"MKTX","MarketAxess Holdings Inc.","Financial","Capital Markets","USA",7595.54,29.40,200.41,-2.88%,444808
+41,"MMC","Marsh & McLennan Cos., Inc.","Financial","Insurance Brokers","USA",99509.73,25.66,201.96,-0.99%,1443954
+42,"MS","Morgan Stanley","Financial","Capital Markets","USA",158079.31,17.72,97.27,-1.42%,4679597
+43,"MSCI","MSCI Inc","Financial","Financial Data & Stock Exchanges","USA",38797.20,33.43,489.74,-1.20%,663462
+44,"MTB","M & T Bank Corp","Financial","Banks - Regional","USA",24306.28,9.84,145.66,-2.12%,657240
+45,"NDAQ","Nasdaq Inc","Financial","Financial Data & Stock Exchanges","USA",34505.32,31.53,59.85,-0.58%,2030600
+46,"NTRS","Northern Trust Corp.","Financial","Asset Management","USA",16721.14,18.09,81.73,-0.43%,1255739
+47,"PFG","Principal Financial Group Inc","Financial","Asset Management","USA",18837.12,15.39,80.37,-0.92%,679095
+48,"PGR","Progressive Corp.","Financial","Insurance - Property & Casualty","USA",118984.95,20.79,203.15,-0.99%,3075842
+49,"PNC","PNC Financial Services Group Inc","Financial","Banks - Regional","USA",60148.08,12.70,151.16,-0.77%,1832917
+50,"PRU","Prudential Financial Inc.","Financial","Insurance - Life","USA",42178.91,19.86,117.49,-0.20%,1106924
+51,"PYPL","PayPal Holdings Inc","Financial","Credit Services","USA",63861.35,15.36,61.05,-1.80%,8132436
+52,"RF","Regions Financial Corp.","Financial","Banks - Regional","USA",17071.07,10.06,18.64,-2.20%,8225882
+53,"RJF","Raymond James Financial, Inc.","Financial","Capital Markets","USA",25228.05,14.73,121.71,-1.48%,627137
+54,"SCHW","Charles Schwab Corp.","Financial","Capital Markets","USA",125351.56,29.52,70.53,-0.37%,5617341
+55,"SPGI","S&P Global Inc","Financial","Financial Data & Stock Exchanges","USA",132969.98,47.64,424.96,-1.40%,870757
+56,"STT","State Street Corp.","Financial","Asset Management","USA",22242.03,13.80,73.83,-0.11%,1760509
+57,"SYF","Synchrony Financial","Financial","Credit Services","USA",17017.27,6.08,42.38,-1.94%,4891691
+58,"TFC","Truist Financial Corporation","Financial","Banks - Regional","USA",50125.22,,37.46,-0.77%,6294496
+59,"TROW","T. Rowe Price Group Inc.","Financial","Asset Management","USA",25737.56,13.68,115.26,-0.92%,908071
+60,"TRV","Travelers Companies Inc.","Financial","Insurance - Property & Casualty","USA",48103.93,15.61,210.07,-0.14%,1404772
+61,"USB","U.S. Bancorp.","Financial","Banks - Regional","USA",60920.36,12.95,39.04,-1.84%,6229482
+62,"V","Visa Inc","Financial","Credit Services","USA",537988.83,30.53,268.86,-0.78%,5467755
+63,"WFC","Wells Fargo & Co.","Financial","Banks - Diversified","USA",204821.30,12.26,58.75,-1.23%,12828491
+64,"WRB","W.R. Berkley Corp.","Financial","Insurance - Property & Casualty","USA",19928.70,13.83,77.95,-0.79%,1292666
+65,"WTW","Willis Towers Watson Public Limited Co","Financial","Insurance Brokers","United Kingdom",25527.28,25.01,249.68,-0.38%,365455
