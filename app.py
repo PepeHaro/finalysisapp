@@ -28,15 +28,18 @@ import os
 
 
 
-# Leer los tokens desde tokens.py
-from tokens import token1, token2
+# Obtener los tokens desde los secretos de Streamlit
+try:
+    token1 = st.secrets["tokens"]["token1"]
+    token2 = st.secrets["tokens"]["token2"]
+except KeyError as e:
+    raise ValueError(f"No se encontró el token {e} en los secretos de Streamlit")
 
 # Verificar si los tokens se cargaron correctamente
 if token1 is None:
-    raise ValueError("No se encontró el token de la API en el archivo tokens.py")
+    raise ValueError("No se encontró el token1 en los secretos de Streamlit")
 if token2 is None:
-    raise ValueError("No se encontró el token de la API en el archivo tokens.py")
-
+    raise ValueError("No se encontró el token2 en los secretos de Streamlit")
 #FOTO
 ruta_foto = "/Users/pepeharo/Documents/IngenieriaFin/FINAL/fot.jpg"
 st.image(ruta_foto,caption= "José Federico Haro Velasco 0233195",use_column_width=True)
