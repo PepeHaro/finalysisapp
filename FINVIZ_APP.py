@@ -25,25 +25,17 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import os
-from dotenv import load_dotenv
 
 
-# Cargar variables de entorno desde .env
-load_dotenv()
 
-#TOKEN-FINVIZ
-# Obtener el token de la variable de entorno
-token1 = os.getenv("token1")
-# Verificar si el token se cargó correctamente
+# Leer los tokens desde tokens.py
+from tokens import token1, token2
+
+# Verificar si los tokens se cargaron correctamente
 if token1 is None:
-    raise ValueError("No se encontró el token de la API en el archivo .env")
-
-#TOKEN-NEWS
-# Obtener el token de la variable de entorno
-token2 = os.getenv("token2")
-# Verificar si el token se cargó correctamente
+    raise ValueError("No se encontró el token de la API en el archivo tokens.py")
 if token2 is None:
-    raise ValueError("No se encontró el token de la API en el archivo .env")
+    raise ValueError("No se encontró el token de la API en el archivo tokens.py")
 
 #FOTO
 ruta_foto = "/Users/pepeharo/Documents/IngenieriaFin/FINAL/fot.jpg"
