@@ -41,8 +41,8 @@ if token1 is None:
 if token2 is None:
     raise ValueError("No se encontró el token2 en los secretos de Streamlit")
 #FOTO
-ruta_foto = "/Users/pepeharo/Documents/IngenieriaFin/FINAL/fot.jpg"
-st.image(ruta_foto,caption= "José Federico Haro Velasco 0233195",use_column_width=True)
+#ruta_foto = "/Users/pepeharo/Documents/IngenieriaFin/FINAL/fot.jpg"
+#st.image(ruta_foto,caption= "José Federico Haro Velasco 0233195",use_column_width=True)
 st.sidebar.title("EXPLORE:bar_chart:")
 page = st.sidebar.selectbox("Select one", ["Company Overview","Sector Dashboard","Implied Volatility","News"])
 
