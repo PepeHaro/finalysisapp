@@ -453,6 +453,9 @@ if page == "Sector Dashboard":
                 # Seleccionar solo las columnas relevantes para el rendimiento
                 performance_data = data[['Performance (Week)', 'Performance (Month)', 'Performance (Quarter)', 'Performance (Half Year)', 'Performance (Year)', 'Performance (YTD)']]
 
+                # Convertir los datos a numéricos para evitar errores de tipo
+                performance_data = performance_data.apply(pd.to_numeric, errors='coerce')
+
                 # Calcular el rendimiento promedio para cada período de tiempo
                 average_performance = performance_data.mean()
 
