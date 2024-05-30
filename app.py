@@ -446,7 +446,7 @@ if page == "Sector Dashboard":
             else:
                 st.markdown("#### *Please ensure the data has 'Insider Own' and 'Inst Own' columns to display the chart*")
 
-        # Descargar los datos del índice S&P 500 desde Yahoo Finance
+    # Descargar los datos del índice S&P 500 desde Yahoo Finance
         end_date = datetime.now().date()
         start_date = datetime(end_date.year - 1, end_date.month, end_date.day).date()
         benchmark_data = yf.download('^GSPC', start=start_date, end=end_date)
@@ -454,7 +454,6 @@ if page == "Sector Dashboard":
         # Calcular el rendimiento del índice de referencia (S&P 500)
         benchmark_returns = benchmark_data['Adj Close'].pct_change().dropna()
 
-        # Supongamos que 'data' es tu DataFrame con las columnas adecuadas para calcular el alpha y el riesgo anual
 
         if selected_category == 'Performance':
             # Verificar que las columnas necesarias estén presentes en el DataFrame
@@ -556,9 +555,8 @@ if page == "Implied Volatility":
     # Convertir la columna de tiempo a formato datetime
     df['time'] = pd.to_datetime(df['time'])
 
-    # Filtrar datos para el período desde mayo de 2023 hasta mayo de 2024
-    start_date = datetime.datetime(2023, 5, 1)
-    end_date = datetime.datetime(2024, 5, 31)
+    start_date = dt.datetime(2023, 5, 1)
+    end_date = dt.datetime(2024, 5, 31)
     df_filtered = df[(df['time'] >= start_date) & (df['time'] <= end_date)]
 
     # Extraer valores únicos del símbolo
