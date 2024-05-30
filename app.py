@@ -731,7 +731,7 @@ if page == "Implied Volatility":
 #VIX PLOT
 # Descargar los datos del VIX
     # Obtener la fecha actual
-    end_date = datetime.datetime.now().strftime("%Y-%m-%d")
+    end_date = datetime.now().strftime("%Y-%m-%d")
 
     # Descargar los datos del VIX con la fecha actual como end date
     vix_data = yf.download("^VIX", start="2023-05-08", end=end_date)
