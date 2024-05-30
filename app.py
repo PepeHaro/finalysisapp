@@ -631,8 +631,8 @@ if page == "Implied Volatility":
     
 #PRECIOS NORMALIZADOS
     # Filtrar datos para el período desde mayo de 2023 hasta mayo de 2024
-    start_date = datetime.datetime(2023, 5, 8)
-    end_date = datetime.datetime(2024, 5, 6)
+    start_date = dt.datetime(2023, 5, 8)
+    end_date = dt.datetime(2024, 5, 6)
     df_filtered = df[(df['time'] >= start_date) & (df['time'] <= end_date)]
 
     # Obtener tickers únicos para el gráfico de línea múltiple
