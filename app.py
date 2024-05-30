@@ -652,31 +652,32 @@ if page == "Implied Volatility":
         iv_percentile = np.nan
 
     # Calcular el IVX
-    ivx = selected_data['impVolatility'].rolling(window=20).mean().iloc[-1]  # Media móvil de la volatilidad implícita
+    #ivx = selected_data['impVolatility'].rolling(window=20).mean().iloc[-1]  # Media móvil de la volatilidad implícita
     
     st.markdown(f"### IMPLIED VOLATILITY: {selected_symbol}")
     # Mostrar los IV Metrics al lado del gráfico
     col1, col2, col3 = st.columns([1, 1, 1])
     with col1:
-        st.write(f"	##### :arrow_forward:**IV Rank:** {iv_rank:.2f}")
+        st.write(f"▶️**IV Rank:** <font color='blue'>{iv_rank:.2f}</font>", unsafe_allow_html=True)
     with col2:
-        st.write(f" ##### :arrow_forward:**IV Percentile:** {iv_percentile:.2f}")
+        st.write(f"▶️**IV Percentile:** <font color='blue'>{iv_percentile:.2f}</font>", unsafe_allow_html=True)
     with col3:
         st.write("")
+
     # Crear el gráfico de volatilidad implícita
     fig_volatility = go.Figure(data=go.Scatter(x=selected_data['time'], y=selected_data['impVolatility'], mode='lines', name='Implied Volatility'))
     fig_volatility.update_layout(title='',
-                                 xaxis_title='Date',
-                                 yaxis_title='Implied Volatility',
-                                 template='plotly_dark')
+                                xaxis_title='Date',
+                                yaxis_title='Implied Volatility',
+                                template='plotly_dark')
 
     # Mostrar el gráfico de volatilidad implícita
     st.plotly_chart(fig_volatility, use_container_width=True)
+
     # Agregar explicación abajo del gráfico
     st.write("**Interpretation:**")
     st.markdown(":arrow_forward:**IV RANK:** It's a measure indicating the current position of implied volatility relative to its historical range, expressed as a value between 0 and 100 without a percentage symbol. The higher the IV Rank, the higher the implied volatility compared to its recent history.")
     st.write(":arrow_forward:**IV PERCENTILE:** It represents the percentage of days during a specified period when implied volatility was lower than the current implied volatility. It's expressed as a percentage, where an IV Percentile of 50% would mean that implied volatility has been lower than the current value approximately half of the time during the selected period.")
-
 
 #VIX PLOT
 # Descargar los datos del VIX
