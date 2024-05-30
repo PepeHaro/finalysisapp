@@ -313,7 +313,7 @@ if page == "Sector Dashboard":
         filename = f"{selected_category}.csv"
         data = pd.read_csv(filename, index_col='No.')
         st.markdown(f"### DASHBOARD: {selected_sector}:chart:")
-        st.write(data)
+        
         # Mostrar métricas según el ticker seleccionado
         selected_ticker = st.selectbox("Select Ticker", data['Ticker'].unique())
         selected_ticker_data = data[data['Ticker'] == selected_ticker]
