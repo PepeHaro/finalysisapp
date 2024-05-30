@@ -446,8 +446,23 @@ if page == "Sector Dashboard":
                 st.markdown("#### *Please ensure the data has 'Insider Own' and 'Inst Own' columns to display the chart*")
 
         elif selected_category == 'Performance':
-            # Configurar y mostrar gráfica para Technical
-            pass  # Aquí colocarás el código específico para la gráfica de Performance
+            # Configurar y mostrar gráfica para Performance
+            if 'Performance (Week)' in data.columns and 'Performance (Month)' in data.columns and 'Performance (Quarter)' in data.columns and \
+            'Performance (Half Year)' in data.columns and 'Performance (Year)' in data.columns and 'Performance (YTD)' in data.columns:
+                
+                # Seleccionar solo las columnas relevantes para el rendimiento
+                performance_data = data[['Ticker', 'Performance (Week)', 'Performance (Month)', 'Performance (Quarter)', 'Performance (Half Year)', 'Performance (Year)', 'Performance (YTD)']]
+
+                # Puedes procesar los datos aquí según tus necesidades, como crear gráficos o calcular métricas específicas
+
+                # Por ejemplo, puedes calcular el rendimiento promedio de diferentes períodos
+                average_performance = performance_data.mean()
+
+                # Y luego mostrar estos valores en una tabla o en algún otro formato
+                st.write(average_performance)
+
+            else:
+                st.markdown("#### *Please download the data to see the performance chart*")
 
 
         elif selected_category == 'Technical':
