@@ -400,12 +400,12 @@ if page == "Sector Dashboard":
 
         elif selected_category == 'Valuation':
             # Gráfica de burbujas para Valuation
-            if 'P/S' in data.columns and 'Sales growth past 5Y' in data.columns and 'Market Cap' in data.columns:
-                fig = px.scatter(data, x='P/S', y='Sales growth past 5Y',
+            if 'P/S' in data.columns and 'Sales growth past 5 years' in data.columns and 'Market Cap' in data.columns:
+                fig = px.scatter(data, x='P/S', y='Sales growth past 5 years',
                                 size='Market Cap', color='Market Cap',
                                 hover_name='Ticker', log_x=True, size_max=40,
                                 title='P/S Ratio vs. Sales Growth Past 5 Years',
-                                labels={'P/S': 'P/S Ratio', 'Sales growth past 5Y': 'Sales growth past 5 years'},
+                                labels={'P/S': 'P/S Ratio', 'Sales growth past 5 years': 'Sales growth past 5 years'},
                                 range_x=[data['P/S'].min(), data['P/S'].max()])  # Ajustar el rango de X
 
                 # Añadir línea punteada horizontal en y=0
