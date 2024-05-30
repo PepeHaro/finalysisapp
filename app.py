@@ -449,7 +449,7 @@ if page == "Sector Dashboard":
             # Configurar y mostrar gráfica para Performance
             if 'Performance (Week)' in data.columns and 'Performance (Month)' in data.columns and 'Performance (Quarter)' in data.columns and \
             'Performance (Half Year)' in data.columns and 'Performance (Year)' in data.columns and 'Performance (YTD)' in data.columns:
-                
+
                 # Seleccionar solo las columnas relevantes para el rendimiento
                 performance_data = data[['Performance (Week)', 'Performance (Month)', 'Performance (Quarter)', 'Performance (Half Year)', 'Performance (Year)', 'Performance (YTD)']]
 
