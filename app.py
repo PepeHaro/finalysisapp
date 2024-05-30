@@ -451,14 +451,12 @@ if page == "Sector Dashboard":
             'Performance (Half Year)' in data.columns and 'Performance (Year)' in data.columns and 'Performance (YTD)' in data.columns:
                 
                 # Seleccionar solo las columnas relevantes para el rendimiento
-                performance_data = data[['Ticker', 'Performance (Week)', 'Performance (Month)', 'Performance (Quarter)', 'Performance (Half Year)', 'Performance (Year)', 'Performance (YTD)']]
+                performance_data = data[['Performance (Week)', 'Performance (Month)', 'Performance (Quarter)', 'Performance (Half Year)', 'Performance (Year)', 'Performance (YTD)']]
 
-                # Puedes procesar los datos aquí según tus necesidades, como crear gráficos o calcular métricas específicas
-
-                # Por ejemplo, puedes calcular el rendimiento promedio de diferentes períodos
+                # Calcular el rendimiento promedio para cada período de tiempo
                 average_performance = performance_data.mean()
 
-                # Y luego mostrar estos valores en una tabla o en algún otro formato
+                # Mostrar estos valores en una tabla o en algún otro formato
                 st.write(average_performance)
 
             else:
