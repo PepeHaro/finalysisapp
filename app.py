@@ -460,25 +460,36 @@ if page == "Sector Dashboard":
             # Verificar que las columnas necesarias estén presentes en el DataFrame
             if 'Performance (Week)' in data.columns and 'Performance (Month)' in data.columns and 'Performance (Quarter)' in data.columns and \
             'Performance (Half Year)' in data.columns and 'Performance (Year)' in data.columns and 'Performance (YTD)' in data.columns and \
-            'Volatility (Week)' in data.columns and 'Volatility (Month)' in data.columns:
+            'Volatility (Week)' in data.columns and 'Volatility (Month)' in data.columns and 'Ticker' in data.columns:
                 
                 # Seleccionar solo las columnas relevantes para el rendimiento y la volatilidad
-                performance_data = data[['Performance (Week)', 'Performance (Month)', 'Performance (Quarter)', 'Performance (Half Year)', 'Performance (Year)', 'Performance (YTD)']]
+                performance_data = data[['Ticker', 'Performance (Week)', 'Performance (Month)', 'Performance (Quarter)', 'Performance (Half Year)', 'Performance (Year)', 'Performance (YTD)']]
                 volatility_data = data[['Volatility (Week)', 'Volatility (Month)']]
 
                 # Eliminar el símbolo de porcentaje y convertir a números decimales
-                performance_data = performance_data.replace('%', '', regex=True).apply(pd.to_numeric, errors='coerce') / 100
+                performance_data.iloc[:, 1:] = performance_data.iloc[:, 1:].replace('%', '', regex=True).apply(pd.to_numeric, errors='coerce') / 100
                 volatility_data = volatility_data.replace('%', '', regex=True).apply(pd.to_numeric, errors='coerce') / 100
 
                 # Calcular el alpha restando el rendimiento del índice de referencia al rendimiento del activo
-                performance_data['Alpha'] = performance_data.mean(axis=1) - benchmark_returns.mean()
+                performance_data['Alpha'] = performance_data.iloc[:, 1:].mean(axis=1) - benchmark_returns.mean()
 
                 # Calcular el riesgo anual (volatilidad anual)
                 annual_volatility = volatility_data.mean(axis=1) * (252 ** 0.5)
                 performance_data['Annual Risk'] = annual_volatility
 
                 # Crear el gráfico de dispersión con Plotly
-                fig = px.scatter(performance_data, x='Annual Risk', y='Alpha', title='Alpha vs. Annual Risk')
+                fig = px.scatter(performance_data, x='Annual Risk', y='Alpha', text='Ticker', title='Alpha vs. Annual Risk')
+                
+                # Agregar línea punteada roja en y=0
+                fig.add_shape(type='line',
+                            x0=performance_data['Annual Risk'].min(), x1=performance_data['Annual Risk'].max(),
+                            y0=0, y1=0,
+                            line=dict(color='Red', width=2, dash='dash'),
+                            xref='x', yref='y')
+
+                # Actualizar el diseño para mostrar los nombres de los tickers
+                fig.update_traces(textposition='top center')
+
                 st.plotly_chart(fig)
             else:
                 st.markdown("#### *Please download the data to see the performance chart*")
