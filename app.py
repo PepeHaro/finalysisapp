@@ -517,16 +517,22 @@ if page == "Sector Dashboard":
                     st.error("Required columns (Beta, RSI) for plotting the bubble chart are missing.")
 
         # TREEMAP MARKET CAP
-        st.markdown("---")
-        st.markdown(f"### MARKET CAP: {selected_sector} sector")
+        # Verifica si 'data' está en el espacio de nombres locales y tiene la columna 'Market Cap'
         if 'data' in locals() and 'Market Cap' in data.columns:
-            fig = px.treemap(data, path=[px.Constant(f"{selected_sector}"), 'Ticker'], values='Market Cap',
-                color='Market Cap', hover_data=['Ticker'],
-                color_continuous_scale='RdBu',
-                title='')
-            st.plotly_chart(fig, use_container_width=True)
+            # Condiciones para mostrar el treemap
+            if selected_category in ['Overview', 'Valuation', 'Financial', 'Ownership']:
+                st.markdown("---")
+                st.markdown(f"### MARKET CAP: {selected_sector} sector")
+                
+                # Crear el gráfico de treemap
+                fig = px.treemap(data, path=[px.Constant(f"{selected_sector}"), 'Ticker'], values='Market Cap',
+                                color='Market Cap', hover_data=['Ticker'],
+                                color_continuous_scale='RdBu', title='')
+                st.plotly_chart(fig, use_container_width=True)
         else:
-            st.write("*Please download the data of the sector to see the treemap*")
+            # Condiciones para no mostrar nada si las categorías son 'Performance' o 'Technical'
+            if selected_category not in ['Performance', 'Technical']:
+                st.write("*Please download the data of the sector to see the treemap*")
 
 # IMPLIED VOLATILITY
 if page == "Implied Volatility":
