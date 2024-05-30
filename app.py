@@ -445,26 +445,42 @@ if page == "Sector Dashboard":
             else:
                 st.markdown("#### *Please ensure the data has 'Insider Own' and 'Inst Own' columns to display the chart*")
 
-        elif selected_category == 'Performance':
-            # Configurar y mostrar gráfica para Performance
+        # Descargar los datos del índice S&P 500 desde Yahoo Finance
+        end_date = datetime.now().date()
+        start_date = datetime(end_date.year - 1, end_date.month, end_date.day).date()
+        benchmark_data = yf.download('^GSPC', start=start_date, end=end_date)
+
+        # Calcular el rendimiento del índice de referencia (S&P 500)
+        benchmark_returns = benchmark_data['Adj Close'].pct_change().dropna()
+
+        # Supongamos que 'data' es tu DataFrame con las columnas adecuadas para calcular el alpha y el riesgo anual
+
+        if selected_category == 'Performance':
+            # Verificar que las columnas necesarias estén presentes en el DataFrame
             if 'Performance (Week)' in data.columns and 'Performance (Month)' in data.columns and 'Performance (Quarter)' in data.columns and \
-            'Performance (Half Year)' in data.columns and 'Performance (Year)' in data.columns and 'Performance (YTD)' in data.columns:
-
-                # Seleccionar solo las columnas relevantes para el rendimiento
+            'Performance (Half Year)' in data.columns and 'Performance (Year)' in data.columns and 'Performance (YTD)' in data.columns and \
+            'Volatility (Week)' in data.columns and 'Volatility (Month)' in data.columns:
+                
+                # Seleccionar solo las columnas relevantes para el rendimiento y la volatilidad
                 performance_data = data[['Performance (Week)', 'Performance (Month)', 'Performance (Quarter)', 'Performance (Half Year)', 'Performance (Year)', 'Performance (YTD)']]
+                volatility_data = data[['Volatility (Week)', 'Volatility (Month)']]
 
-                # Eliminar el símbolo de porcentaje y convertir a números
-                performance_data = performance_data.replace('%', '', regex=True).apply(pd.to_numeric, errors='coerce')
+                # Eliminar el símbolo de porcentaje y convertir a números decimales
+                performance_data = performance_data.replace('%', '', regex=True).apply(pd.to_numeric, errors='coerce') / 100
+                volatility_data = volatility_data.replace('%', '', regex=True).apply(pd.to_numeric, errors='coerce') / 100
 
-                # Calcular el rendimiento promedio para cada período de tiempo
-                average_performance = performance_data.mean()
+                # Calcular el alpha restando el rendimiento del índice de referencia al rendimiento del activo
+                performance_data['Alpha'] = performance_data.mean(axis=1) - benchmark_returns.mean()
 
-                # Mostrar estos valores en una tabla o en algún otro formato
-                st.write(average_performance)
+                # Calcular el riesgo anual (volatilidad anual)
+                annual_volatility = volatility_data.mean(axis=1) * (252 ** 0.5)
+                performance_data['Annual Risk'] = annual_volatility
 
+                # Crear el gráfico de dispersión con Plotly
+                fig = px.scatter(performance_data, x='Annual Risk', y='Alpha', title='Alpha vs. Annual Risk')
+                st.plotly_chart(fig)
             else:
                 st.markdown("#### *Please download the data to see the performance chart*")
-
 
         elif selected_category == 'Technical':
                 # Gráfico de Dispersión con Bubble: Beta vs RSI con tamaño de burbuja constante
