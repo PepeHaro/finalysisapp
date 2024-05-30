@@ -532,7 +532,7 @@ if page == "Sector Dashboard":
         else:
             # Condiciones para no mostrar nada si las categorías son 'Performance' o 'Technical'
             if selected_category not in ['Performance', 'Technical']:
-                st.write("*Please download the data of the sector to see the treemap*")
+                st.write("")
 
 # IMPLIED VOLATILITY
 if page == "Implied Volatility":
