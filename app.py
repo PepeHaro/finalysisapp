@@ -400,17 +400,17 @@ if page == "Sector Dashboard":
 
         elif selected_category == 'Valuation':
             # Gráfica de burbujas para Valuation
-            if 'P/E' in data.columns and 'EPS growth next year' in data.columns and 'Market Cap' in data.columns:
-                fig = px.scatter(data, x='P/E', y='EPS growth next year',
+            if 'P/S' in data.columns and 'Sales growth past 5Y' in data.columns and 'Market Cap' in data.columns:
+                fig = px.scatter(data, x='P/S', y='Sales growth past 5Y',
                                 size='Market Cap', color='Market Cap',
                                 hover_name='Ticker', log_x=True, size_max=40,
-                                title='P/E Ratio vs. Expected EPS Next Year',
-                                labels={'P/E': 'P/E Ratio', 'EPS next Y': 'EPS growth next year'},
-                                range_x=[data['P/E'].min(), data['P/E'].max()])  # Ajustar el rango de X
+                                title='P/S Ratio vs. Sales Growth Past 5 Years',
+                                labels={'P/S': 'P/S Ratio', 'Sales growth past 5Y': 'Sales growth past 5 years'},
+                                range_x=[data['P/S'].min(), data['P/S'].max()])  # Ajustar el rango de X
 
                 # Añadir línea punteada horizontal en y=0
                 fig.add_shape(type='line',
-                            x0=data['P/E'].min(), x1=data['P/E'].max(),
+                            x0=data['P/S'].min(), x1=data['P/S'].max(),
                             y0=0, y1=0,
                             line=dict(color='Red', width=2, dash='dash'),
                             xref='x', yref='y')
