@@ -368,7 +368,7 @@ if page == "Sector Dashboard":
                 st.markdown("---")
                 col1.metric("P/E Ratio", value=selected_ticker_data['P/E'].iloc[0])
                 col2.metric("Volume", value=f"{selected_ticker_data['Volume'].iloc[0]:,.0f}")
-                col3.metric("Industry", value=selected_ticker_data['Industry'].iloc[0])
+                col3.metric("## Industry", value=selected_ticker_data['Industry'].iloc[0])
 
             elif selected_category == 'Valuation':
                 col1.metric("Market Cap", value=f"${selected_ticker_data['Market Cap'].iloc[0]:,.2f}")
