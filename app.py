@@ -113,7 +113,7 @@ if page == "Company Overview":
                 st.write(f"· Gross Margin: {info['grossMargins']*100:.2f}%" if 'grossMargins' in info and isinstance(info['grossMargins'], (int, float)) else 'N/A')
                 st.write(f"· EBITDA Margin: {info['ebitdaMargins']*100:.2f}%" if 'ebitdaMargins' in info and isinstance(info['ebitdaMargins'], (int, float)) else 'N/A')
                 st.write(f"· P/E: {info['trailingPE']:.2f}" if 'trailingPE' in info and isinstance(info['trailingPE'], (int, float)) else 'N/A')
-                st.write(f"· Number of employees: {info['fullTimeEmployees']:,}" if 'fullTimeEmployees' in info and isinstance(info['fullTimeEmployees'], (int, float)) else 'N/A')
+                st.write(f"· Full-time employees: {info['fullTimeEmployees']:,}" if 'fullTimeEmployees' in info and isinstance(info['fullTimeEmployees'], (int, float)) else 'N/A')
                 st.write(f"· Recommendation: {info.get('recommendationKey', 'N/A')}")
 
             # Mostrar la descripción de la empresa en la columna derecha
