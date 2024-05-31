@@ -350,8 +350,12 @@ if page == "Sector Dashboard":
             if selected_category == 'Overview':
                 col1.metric("Market Cap", value=f"${selected_ticker_data['Market Cap'].iloc[0]:,.2f}")
                 col2.metric("Price", value=f"${selected_ticker_data['Price'].iloc[0]:,.2f}")
-                
-                # Obtener el valor del cambio y definir el color correspondiente
+                col3.metric("Industry", value=selected_ticker_data['Industry'].iloc[0])
+
+                st.markdown("---")
+                col1.metric("P/E Ratio", value=selected_ticker_data['P/E'].iloc[0])
+                col2.metric("Volume", value=f"{selected_ticker_data['Volume'].iloc[0]:,.0f}")
+                                # Obtener el valor del cambio y definir el color correspondiente
                 change_value = selected_ticker_data['Change'].iloc[0]
                 if '%' in change_value:
                     change_value_float = float(change_value.strip('%'))
@@ -365,10 +369,6 @@ if page == "Sector Dashboard":
                     change_color = "black"  # Por defecto, si no contiene '%', no se aplica ningún color
                 # Usé HTML para mostrar la palabra "Change" y el cambio con el color correspondiente
                 col3.markdown(f"<div style='display: flex; flex-direction: column; align-items: center;'><span>Change</span><span style='color: {change_color}; font-weight: bold; font-size: 24px;'>{change_value}</span></div>", unsafe_allow_html=True)
-                st.markdown("---")
-                col1.metric("P/E Ratio", value=selected_ticker_data['P/E'].iloc[0])
-                col3.metric("Volume", value=f"{selected_ticker_data['Volume'].iloc[0]:,.0f}")
-                col2.metric("Industry", value=selected_ticker_data['Industry'].iloc[0])
 
             elif selected_category == 'Valuation':
                 col1.metric("Market Cap", value=f"${selected_ticker_data['Market Cap'].iloc[0]:,.2f}")
