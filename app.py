@@ -304,6 +304,7 @@ if page == "Sector Dashboard":
 
         downloaded_successfully = True
         sector_filter = sectores_disponibles[selected_sector] if selected_sector != 'Any' else ''
+        sector_index = Index_list[selected_index] if selected_index != 'Any' else ''
 
         for key, value in FinViz_Structure.items():
             url = f"{End_Point_1}{value}&f=cap_largeover|cap_midunder,exch_nyse|nasd,{selected_index},{sector_filter},sh_opt_option&auth={token1}"
