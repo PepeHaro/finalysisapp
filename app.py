@@ -263,6 +263,15 @@ if page == "Sector Dashboard":
         'Utilities': 'sec_utilities'
     }
 
+    Index_list = {
+        'Any': '',
+        'S&P500': 'idx_sp500',
+        'NASDAQ': 'idx_ndx',
+        'DowJones': 'idx_dji',
+        'Russell2000': 'idx_rut',
+    }
+
+
     End_Point_1 = "https://elite.finviz.com/export.ashx?v="
     
     # Guardar el último sector descargado
@@ -285,6 +294,9 @@ if page == "Sector Dashboard":
     # Selección de categoría y visualización de datos
     selected_category = st.selectbox("Category", list(FinViz_Structure.keys()))
 
+    # Selección del ínice y visualización de datos
+    selected_index = st.selectbox("Index", list(Index_list.keys()))
+
     # Descarga de datos
     if st.button("Download Data"):
         st.write("Wait a moment...:clock3:")
@@ -293,7 +305,7 @@ if page == "Sector Dashboard":
         sector_filter = sectores_disponibles[selected_sector] if selected_sector != 'Any' else ''
 
         for key, value in FinViz_Structure.items():
-            url = f"{End_Point_1}{value}&f=cap_largeover|cap_midunder,exch_nyse|nasd,idx_sp500|idx_ndx|idx_dji|idx_rut,{sector_filter},sh_opt_option&auth={token1}"
+            url = f"{End_Point_1}{value}&f=cap_largeover|cap_midunder,exch_nyse|nasd,{selected_index},{sector_filter},sh_opt_option&auth={token1}"
             response = requests.get(url)
             if response.status_code == 200:
                 filename = f"{key}.csv"
