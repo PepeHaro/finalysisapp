@@ -333,7 +333,7 @@ if page == "Sector Dashboard":
         data = pd.read_csv(filename, index_col='No.')
         
         st.markdown("---")
-        st.markdown(f"### DASHBOARD {selected_sector}-{selected_index}:chart:")
+        st.markdown(f"### {selected_sector}-{selected_index}:chart:")
     
         # Mostrar métricas según el ticker seleccionado
         selected_ticker = st.selectbox("Select Ticker", data['Ticker'].unique())
