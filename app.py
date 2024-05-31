@@ -406,7 +406,7 @@ if page == "Sector Dashboard":
                 col3.metric("SMA20", value=selected_ticker_data['20-Day Simple Moving Average'].iloc[0])
 
 # GRÁFICAS DEPENDIENDO LA CATEGORÍA
-    if selected_category and (selected_sector == st.session_state.get('last_downloaded_sector', '')):
+    if selected_category and (selected_sector == st.session_state.get('last_downloaded_sector', '')) and (selected_index == st.session_state.get('last_downloaded_index', '')):
         filename = f"{selected_category}.csv"
         data = pd.read_csv(filename, index_col='No.')
 
