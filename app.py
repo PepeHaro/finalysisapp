@@ -327,8 +327,8 @@ if page == "Sector Dashboard":
             st.session_state['last_downloaded_sector'] = selected_sector
             st.success(f"The data of the {selected_index} of the {selected_sector} sector has been downloaded successfully")
     
-    # Mostrar datos si el sector coincide, usamos st.session_state.get
-    if selected_category and (selected_sector == st.session_state.get('last_downloaded_sector', '')):
+    # Mostrar datos si el sector e índice coinciden, usamos st.session_state.get
+    if selected_category and (selected_sector == st.session_state.get('last_downloaded_sector', '')) and (selected_index == st.session_state.get('last_downloaded_index', '')):
         filename = f"{selected_category}.csv"
         data = pd.read_csv(filename, index_col='No.')
         
