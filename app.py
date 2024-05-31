@@ -64,7 +64,7 @@ if page == "Company Overview":
             info = company.info
 
             # Mostrar la información disponible para depuración
-            st.write("Información completa:", info)
+            #st.write("Información completa:", info)
 
             # Obtener el precio en tiempo real y los datos de hoy
             todays_data = company.history(period='1d')
@@ -114,6 +114,7 @@ if page == "Company Overview":
                 st.write(f"· EBITDA Margin: {info['ebitdaMargins']*100:.2f}%" if 'ebitdaMargins' in info and isinstance(info['ebitdaMargins'], (int, float)) else 'N/A')
                 st.write(f"· P/E: {info['trailingPE']:.2f}" if 'trailingPE' in info and isinstance(info['trailingPE'], (int, float)) else 'N/A')
                 st.write(f"· Full-time employees: {info['fullTimeEmployees']:,}" if 'fullTimeEmployees' in info and isinstance(info['fullTimeEmployees'], (int, float)) else 'N/A')
+                st.write(f"· Beta: {info['beta']:,}" if 'beta' in info and isinstance(info['beta'], (int, float)) else 'N/A')
                 st.write(f"· Recommendation: {info.get('recommendationKey', 'N/A')}")
 
             # Mostrar la descripción de la empresa en la columna derecha
