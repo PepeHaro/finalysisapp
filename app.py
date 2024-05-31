@@ -326,7 +326,7 @@ if page == "Sector Dashboard":
         if downloaded_successfully:
             st.session_state['last_downloaded_sector'] = selected_sector
             st.success(f"The data of the {selected_index} of the {selected_sector} sector has been downloaded successfully")
-
+            st.write(url)
     # Mostrar datos si el sector coincide, usamos st.session_state.get
     if selected_category and (selected_sector == st.session_state.get('last_downloaded_sector', '')):
         filename = f"{selected_category}.csv"
