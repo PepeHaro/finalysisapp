@@ -64,7 +64,7 @@ if page == "Company Overview":
             info = company.info
 
             # Mostrar la información disponible para depuración
-            #st.write("Información completa:", info)
+            st.write("Información completa:", info)
 
             # Obtener el precio en tiempo real y los datos de hoy
             todays_data = company.history(period='1d')
