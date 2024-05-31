@@ -279,11 +279,11 @@ if page == "Sector Dashboard":
     st.markdown("""
     ## DOWNLOAD SECTOR-BASED DATA 	:classical_building:
 
-    In this section, you can download detailed financial data from Finviz based on the sector you select. This data pertains to companies listed on NASDAQ and NYSE that are part of the S&P 500 index. You can filter the companies by sectors such as Technology, Healthcare, Financial, and more.
+    In this section, you can download detailed financial data from Finviz based on the sector you select. This data pertains to companies listed on NASDAQ and NYSE that are part of the S&P 500, NASDAQ, DOW, or RUSELL2000 index. You can filter the companies by sectors such as Technology, Healthcare, Financial, and more.
 
     The data available for download includes companies of various market capitalizations, from small-cap to large-cap, which are optionable. This feature is particularly useful for investors looking to analyze different sectors within the major U.S. stock exchanges for investment opportunities or market research.
 
-    Please select the sector from the dropdown menu and click on 'Download Data' to begin the download of sector-specific financial data.
+    Please select the Index and the sector from the dropdown menu and click on 'Download Data' to begin the download of sector-specific financial data.
     """)
     st.markdown("---")
 
