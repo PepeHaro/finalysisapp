@@ -293,7 +293,7 @@ if page == "Sector Dashboard":
         sector_filter = sectores_disponibles[selected_sector] if selected_sector != 'Any' else ''
 
         for key, value in FinViz_Structure.items():
-            url = f"{End_Point_1}{value}&f=cap_largeover|cap_midunder,exch_nyse|nasd,idx_sp500|idx_ndx,{sector_filter},sh_opt_option&auth={token1}"
+            url = f"{End_Point_1}{value}&f=cap_largeover|cap_midunder,exch_nyse|nasd,idx_sp500|idx_ndx|idx_dji|idx_rut,{sector_filter},sh_opt_option&auth={token1}"
             response = requests.get(url)
             if response.status_code == 200:
                 filename = f"{key}.csv"
