@@ -104,8 +104,8 @@ if page == "Company Overview":
                 st.write(f"· WebPage: {website if website else 'N/A'}")
                 st.write(f"· Industry: {info.get('industry', 'N/A')}")
                 st.write(f"· Sector: {info.get('sector', 'N/A')}")
-                st.write(f"· Total Income: ${'{:,.0f}'.format(info['totalRevenue']) if 'totalRevenue' in info and isinstance(info['totalRevenue'], (int, float)) else 'N/A'}")
                 st.write(f"· MarketCap: ${'{:,.0f}'.format(info['marketCap']) if 'marketCap' in info and isinstance(info['marketCap'], (int, float)) else 'N/A'}")
+                st.write(f"· Total Income: ${'{:,.0f}'.format(info['totalRevenue']) if 'totalRevenue' in info and isinstance(info['totalRevenue'], (int, float)) else 'N/A'}")
                 st.write(f"· Total Debt: ${'{:,.0f}'.format(info['totalDebt']) if 'totalDebt' in info and isinstance(info['totalDebt'], (int, float)) else 'N/A'}")
                 st.write(f"· Total Cash: ${'{:,.0f}'.format(info['totalCash']) if 'totalCash' in info and isinstance(info['totalCash'], (int, float)) else 'N/A'}")
                 st.write(f"· Net Income: ${'{:,.0f}'.format(info['netIncomeToCommon']) if 'netIncomeToCommon' in info and isinstance(info['netIncomeToCommon'], (int, float)) else 'N/A'}")
@@ -114,7 +114,7 @@ if page == "Company Overview":
                 st.write(f"· EBITDA Margin: {info['ebitdaMargins']*100:.2f}%" if 'ebitdaMargins' in info and isinstance(info['ebitdaMargins'], (int, float)) else 'N/A')
                 st.write(f"· P/E: {info['trailingPE']:.2f}" if 'trailingPE' in info and isinstance(info['trailingPE'], (int, float)) else 'N/A')
                 st.write(f"· Number of employees: {info['fullTimeEmployees']:,}" if 'fullTimeEmployees' in info and isinstance(info['fullTimeEmployees'], (int, float)) else 'N/A')
-
+                st.write(f"· Recommendation: {info.get('recommendationKey', 'N/A')}")
 
             # Mostrar la descripción de la empresa en la columna derecha
             with col2:
