@@ -236,7 +236,7 @@ if page == "Company Overview":
         except Exception as e:
             st.warning(f"Please type the correct ticker. Error: {str(e)}")
             
-#SECTOR DASHBOARD
+# SECTOR DASHBOARD
 if page == "Sector Dashboard":
     # Configuración inicial
     FinViz_Structure = {
@@ -271,9 +271,8 @@ if page == "Sector Dashboard":
         'Russell2000': 'idx_rut',
     }
 
-
     End_Point_1 = "https://elite.finviz.com/export.ashx?v="
-    
+
     # Guardar el último sector descargado
     last_downloaded_sector = st.session_state.get('last_downloaded_sector', '')
 
@@ -289,7 +288,7 @@ if page == "Sector Dashboard":
     st.markdown("---")
 
     st.markdown("### Select the Index and Sector")
-    # Selección del ínice y visualización de datos
+    # Selección del índice y visualización de datos
     selected_index = st.selectbox("Index", list(Index_list.keys()))
 
     # Selector de sector
@@ -304,10 +303,16 @@ if page == "Sector Dashboard":
 
         downloaded_successfully = True
         sector_filter = sectores_disponibles[selected_sector] if selected_sector != 'Any' else ''
-        sector_index = Index_list[selected_index] if selected_index != 'Any' else ''
+        index_filter = Index_list[selected_index] if selected_index != 'Any' else ''
 
         for key, value in FinViz_Structure.items():
-            url = f"{End_Point_1}{value}&f=cap_largeover|cap_midunder,exch_nyse|nasd,{selected_index},{sector_filter},sh_opt_option&auth={token1}"
+            filters = 'cap_largeover|cap_midunder,exch_nyse|nasd'
+            if sector_filter:
+                filters += f",{sector_filter}"
+            if index_filter:
+                filters += f",{index_filter}"
+            
+            url = f"{End_Point_1}{value}&f={filters},sh_opt_option&auth={token1}"
             response = requests.get(url)
             if response.status_code == 200:
                 filename = f"{key}.csv"
@@ -321,13 +326,13 @@ if page == "Sector Dashboard":
         if downloaded_successfully:
             st.session_state['last_downloaded_sector'] = selected_sector
             st.success(f"The data of the {selected_index} of the {selected_sector} sector has been downloaded successfully")
-            
 
     # Mostrar datos si el sector coincide, usamos st.session_state.get
     if selected_category and (selected_sector == st.session_state.get('last_downloaded_sector', '')):
         filename = f"{selected_category}.csv"
         data = pd.read_csv(filename, index_col='No.')
         st.markdown(f"### DASHBOARD: {selected_sector}:chart:")
+        st.dataframe(data)
         
         # Mostrar métricas según el ticker seleccionado
         selected_ticker = st.selectbox("Select Ticker", data['Ticker'].unique())
