@@ -287,15 +287,16 @@ if page == "Sector Dashboard":
     Please select the sector from the dropdown menu and click on 'Download Data' to begin the download of sector-specific financial data.
     """)
     st.markdown("---")
+
+    # Selección del ínice y visualización de datos
+    selected_index = st.selectbox("Index", list(Index_list.keys()))
+
     # Selector de sector
     st.markdown("### Select the sector and category")
     selected_sector = st.selectbox("Sector", list(sectores_disponibles.keys()))
 
     # Selección de categoría y visualización de datos
     selected_category = st.selectbox("Category", list(FinViz_Structure.keys()))
-
-    # Selección del ínice y visualización de datos
-    selected_index = st.selectbox("Index", list(Index_list.keys()))
 
     # Descarga de datos
     if st.button("Download Data"):
@@ -318,7 +319,7 @@ if page == "Sector Dashboard":
 
         if downloaded_successfully:
             st.session_state['last_downloaded_sector'] = selected_sector
-            st.success(f"The data of the {selected_sector} sector  has been downloaded successfully")
+            st.success(f"The data of the {selected_index} of the {selected_sector} sector has been downloaded successfully")
             
 
     # Mostrar datos si el sector coincide, usamos st.session_state.get
