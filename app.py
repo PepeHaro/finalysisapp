@@ -288,11 +288,11 @@ if page == "Sector Dashboard":
     """)
     st.markdown("---")
 
+    st.markdown("### Select the Index and Sector")
     # Selección del ínice y visualización de datos
     selected_index = st.selectbox("Index", list(Index_list.keys()))
 
     # Selector de sector
-    st.markdown("### Select the sector and category")
     selected_sector = st.selectbox("Sector", list(sectores_disponibles.keys()))
 
     # Selección de categoría y visualización de datos
