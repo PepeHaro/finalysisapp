@@ -330,7 +330,7 @@ if page == "Sector Dashboard":
     
     # Mostrar datos si el sector e índice coinciden, usamos st.session_state.get
     if selected_category and (selected_sector == st.session_state.get('last_downloaded_sector', '')) and (selected_index == st.session_state.get('last_downloaded_index', '')):
-        filename = f"{selected_category}{selected_index}.csv"
+        filename = f"{selected_category}.csv"
         data = pd.read_csv(filename, index_col='No.')
         
         st.markdown("---")
