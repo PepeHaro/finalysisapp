@@ -395,7 +395,7 @@ if page == "Sector Dashboard":
             elif selected_category == 'Ownership':
                 col1.metric("Insider Ownership", value=selected_ticker_data['Insider Ownership'].iloc[0])
                 col2.metric("Inst Ownership", value=selected_ticker_data['Institutional Ownership'].iloc[0])
-                col3.metric("Float Short", value=selected_ticker_data['Float Short'].iloc[0])
+                col3.metric("Float Short", value=selected_ticker_data['Short Float'].iloc[0])
                 st.markdown("---")
                 col1.metric("Short Ratio", value=selected_ticker_data['Short Ratio'].iloc[0])
                 col2.metric("Avg Volume", value=selected_ticker_data['Average Volume'].iloc[0])
